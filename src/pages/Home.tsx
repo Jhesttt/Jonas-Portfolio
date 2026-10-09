@@ -1,4 +1,5 @@
 import { site } from '../data/site'
+import { videos } from '../data/videos'
 import Container from '../components/ui/Container'
 import Button from '../components/ui/Button'
 import SectionRow from '../components/ui/SectionRow'
@@ -53,7 +54,12 @@ export default function Home() {
           <FeaturedPhotos />
         </SectionRow>
 
-        <SectionRow {...home.videos} to="/videos">
+        <SectionRow
+          eyebrow={home.videos.eyebrow}
+          title={videos.length === 1 ? home.videos.singleTitle : home.videos.title}
+          linkLabel={videos.length === 1 ? home.videos.singleLinkLabel : home.videos.linkLabel}
+          to="/videos"
+        >
           <FeaturedVideos />
         </SectionRow>
 

@@ -43,10 +43,12 @@ Videos are **not** stored in this project. Host them on YouTube and embed them.
 
 1. Upload the video to YouTube and set visibility to **Unlisted** (only people with the link, such as this site, can watch).
 2. Copy the video ID from the URL: `https://www.youtube.com/watch?v=`**`dQw4w9WgXcQ`** → `dQw4w9WgXcQ`.
-3. In `src/data/videos.ts`, set the entry's `youtubeId` to that ID, and update `title`, `role` and `year`.
+3. In `src/data/videos.ts`, set the entry's `youtubeId` to that ID, and update `title`, `roles`, `year` and (optionally) `context`.
 4. Thumbnail: leave `thumbnail: ''` to use YouTube's automatic one, or put your own image in `public/thumbnails/` and set `thumbnail: '/thumbnails/northbound.jpg'`.
 
-**Google Drive instead of YouTube?** Leave `youtubeId: ''` and set `driveUrl: 'https://drive.google.com/…'`. The card then opens the Drive link in a new tab. YouTube is recommended: it streams smoothly and plays on the page.
+**Google Drive instead of YouTube?** Leave `youtubeId: ''` and set `driveUrl: 'https://drive.google.com/…'`. The video then opens the Drive link in a new tab, with an "Opens in Drive" label. YouTube is recommended: it streams smoothly and plays on the page.
+
+**One film or many.** The Videos page adapts to how many entries are in `videos.ts`: one entry gets a full-width "Featured Film" layout, two or more get a grid. Add or delete entries, and the layout follows.
 
 ## Tools (About page)
 
@@ -54,7 +56,7 @@ In `src/data/tools.ts`, each tool has a short `icon` (two letters shown as a log
 
 ## Site details
 
-`src/data/site.ts` holds your name, tagline, intro, bio paragraphs, email, location, social links, and the headings shown at the top of each page. Replace the portrait and hero image with files from `public/photos/` the same way as photos.
+`src/data/site.ts` holds your name, tagline, intro, bio paragraphs, email, location, social links, and the headings shown at the top of each page. Social links start as `#` placeholders; replace each `url` with the real profile address. Replace the portrait and hero image with files from `public/photos/` the same way as photos.
 
 ## Preview your changes
 
@@ -62,15 +64,3 @@ In `src/data/tools.ts`, each tool has a short `icon` (two letters shown as a log
 npm run dev      # live preview at http://localhost:5173
 npm run build    # production build into dist/
 ```
-
-## Social links
-
-In `src/data/site.ts`, each entry in `socials` is a link, a text handle, or both:
-
-```ts
-{ label: 'Instagram', url: 'https://instagram.com/yourname' },  // link
-{ label: 'Discord', handle: 'yourname' },                         // text only (username)
-{ label: 'Discord', url: 'https://discord.gg/invite', handle: 'yourname' }, // both
-```
-
-`url: '#'` is a placeholder that goes nowhere. Replace it with the real profile URL.

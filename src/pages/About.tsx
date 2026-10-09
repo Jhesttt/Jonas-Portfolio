@@ -2,6 +2,7 @@ import { site } from '../data/site'
 import Container from '../components/ui/Container'
 import SectionHeading from '../components/ui/SectionHeading'
 import HighlightCard from '../components/ui/HighlightCard'
+import CreditCard from '../components/ui/CreditCard'
 
 export default function About() {
   const { eyebrow, title, description } = site.pages.about
@@ -39,7 +40,10 @@ export default function About() {
             ))}
           </div>
 
-          <HighlightCard {...site.highlight} />
+          <div className="space-y-4">
+            <HighlightCard {...site.highlight} />
+            <CreditCard {...site.supportingCredit} />
+          </div>
         </div>
       </div>
     </Container>

@@ -1,21 +1,8 @@
 import { ArrowUpRight } from 'lucide-react'
 import type { SocialLink as SocialLinkData } from '../../data/site'
 
-/**
- * One social entry. Renders a link when `url` is set, with `handle` shown beside
- * the label if present; with only a `handle` (e.g. a Discord username) it renders text.
- */
-export default function SocialLink({ label, url, handle, className = '' }: SocialLinkData & { className?: string }) {
-  if (!url) {
-    return (
-      <span className={`inline-flex items-baseline gap-2 ${className}`}>
-        {label}
-        {handle && <span className="text-muted">{handle}</span>}
-      </span>
-    )
-  }
-
-  // '#' is a placeholder: keep it in the same tab and skip the external arrow.
+/** One social link. A '#' url is a placeholder: it stays in the same tab and shows no external arrow. */
+export default function SocialLink({ label, url, className = '' }: SocialLinkData & { className?: string }) {
   const external = /^https?:/.test(url)
 
   return (
@@ -25,7 +12,6 @@ export default function SocialLink({ label, url, handle, className = '' }: Socia
       {...(external ? { target: '_blank', rel: 'noreferrer noopener' } : {})}
     >
       {label}
-      {handle && <span className="text-muted">{handle}</span>}
       {external && (
         <ArrowUpRight
           size={16}
