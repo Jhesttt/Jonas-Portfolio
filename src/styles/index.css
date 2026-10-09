@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Design tokens. Values are space-separated RGB channels so Tailwind can apply
+ * opacity (e.g. bg-accent/20). Hex equivalents are noted beside each token.
+ * Pure #000 is intentionally never used.
+ */
+@layer base {
+  :root {
+    --bg: 247 247 247; /* #F7F7F7 */
+    --bg-elevated: 255 255 255; /* #FFFFFF */
+    --text: 20 20 20; /* #141414 */
+    --text-muted: 92 86 80; /* #5C5650 */
+    --accent: 255 178 44; /* #FFB22C */
+    --accent-contrast: 26 18 8; /* #1A1208 */
+    --secondary: 133 72 54; /* #854836 */
+    --border: 228 225 220; /* #E4E1DC */
+  }
+
+  .dark {
+    --bg: 18 18 18; /* #121212 */
+    --bg-elevated: 28 26 25; /* #1C1A19 */
+    --text: 242 239 234; /* #F2EFEA */
+    --text-muted: 168 160 152; /* #A8A098 */
+    --accent: 255 185 74; /* #FFB94A */
+    --accent-contrast: 26 18 8; /* #1A1208 */
+    --secondary: 176 122 100; /* #B07A64 */
+    --border: 42 39 36; /* #2A2724 */
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-bg font-sans text-ink antialiased;
+    font-feature-settings: 'ss01', 'cv11';
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Colour changes on toggle, but only once the page is interactive. */
+  body,
+  header,
+  footer {
+    transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease;
+  }
+
+  ::selection {
+    @apply bg-accent text-accent-contrast;
+  }
+
+  /* Amber has too little contrast against the light bg for a focus ring, so use ink. */
+  :focus-visible {
+    outline: 2px solid rgb(var(--text));
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
