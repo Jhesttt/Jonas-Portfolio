@@ -12,16 +12,13 @@ export default function Home() {
   return (
     <>
       {/* Hero */}
-      <Container className="pt-14 sm:pt-20 lg:pt-28">
-        {/* The name leads; the tagline supports it. */}
-        <h1 className="font-display text-[3.5rem] leading-[0.95] tracking-tight sm:text-8xl lg:text-[10.5rem]">
-          {site.name}
-        </h1>
-        <p className="mt-5 font-display text-3xl italic leading-tight text-muted sm:mt-7 sm:text-5xl">
+      <Container className="pt-16 sm:pt-28 lg:pt-36">
+        {/* The tagline is the hero; the role and intro support it. */}
+        <h1 className="text-balance font-display text-[5rem] leading-[0.92] tracking-tight sm:text-9xl lg:text-[13rem]">
           {site.tagline}
-        </p>
+        </h1>
 
-        <div className="mt-12 flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
+        <div className="mt-12 flex flex-col gap-8 sm:mt-16 md:flex-row md:items-end md:justify-between">
           <div className="max-w-xl">
             <p className="mb-3 text-xs font-medium uppercase tracking-eyebrow text-secondary">{site.role}</p>
             <p className="text-lg leading-relaxed text-muted">{site.intro}</p>
@@ -34,7 +31,7 @@ export default function Home() {
           </div>
         </div>
 
-        <figure className="relative mt-14 overflow-hidden rounded-3xl bg-elevated sm:mt-20">
+        <figure className="relative mt-16 overflow-hidden rounded-3xl bg-elevated sm:mt-24">
           <div className="aspect-[4/3] sm:aspect-[2/1]">
             <img
               src={heroImage.src}

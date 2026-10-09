@@ -2,10 +2,11 @@ import { useId, useRef, useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import { Plus } from 'lucide-react'
 import type { Tool } from '../../data/tools'
+import ToolLogo from './ToolLogo'
 
 /**
- * A tool card with two faces stacked in the same space: a resting face (monogram, name,
- * category) and a reveal face (description). They cross-fade in 200ms.
+ * A tool card with two faces stacked in the same space: a resting face (logo, name,
+ * category, one-line teaser) and a reveal face (full description). They cross-fade in 200ms.
  *
  * Input:
  *  - mouse: hovering reveals, leaving hides
@@ -14,7 +15,7 @@ import type { Tool } from '../../data/tools'
  * The whole card is one button, so hover is never the only way in.
  */
 export default function ToolCard({ tool }: { tool: Tool }) {
-  const { name, icon, category, description, status, since } = tool
+  const { name, category, teaser, description, status, since } = tool
   const [open, setOpen] = useState(false)
   const lastPointer = useRef<string>('mouse')
   const reduceMotion = useReducedMotion()
@@ -39,7 +40,7 @@ export default function ToolCard({ tool }: { tool: Tool }) {
         setOpen((value) => !value)
       }}
       onKeyDown={(e) => e.key === 'Escape' && setOpen(false)}
-      className={`group relative grid min-h-[19rem] w-full grid-cols-[minmax(0,1fr)] overflow-hidden rounded-3xl border bg-elevated p-5 text-left transition-colors duration-200 sm:p-6 ${
+      className={`group relative grid min-h-[19rem] w-full lg:min-h-[16.5rem] grid-cols-[minmax(0,1fr)] overflow-hidden rounded-3xl border bg-elevated p-5 text-left transition-colors duration-200 sm:p-6 ${
         open ? 'border-ink' : 'border-line'
       }`}
     >
@@ -51,18 +52,17 @@ export default function ToolCard({ tool }: { tool: Tool }) {
         className="col-start-1 row-start-1 flex flex-col justify-between"
       >
         <span className="flex flex-col items-start gap-3">
-          <span className="grid h-16 w-16 place-items-center rounded-2xl border border-line bg-bg font-display text-3xl leading-none text-ink">
-            {icon}
-          </span>
+          <ToolLogo tool={tool} />
           {status && (
             <span className="rounded-full border border-line bg-bg px-2.5 py-1 text-[11px] font-medium tracking-tight text-secondary">
               {status}
             </span>
           )}
         </span>
-        <span className="block pr-8">
+        <span className="block">
           <span className="block font-display text-2xl leading-none tracking-tight sm:text-3xl">{name}</span>
-          <span className="mt-2 block text-sm text-muted">{category}</span>
+          <span className="mt-2 block text-xs font-medium uppercase tracking-eyebrow text-secondary">{category}</span>
+          <span className="mt-3 block text-sm leading-snug text-muted">{teaser}</span>
         </span>
       </motion.span>
 
@@ -74,7 +74,7 @@ export default function ToolCard({ tool }: { tool: Tool }) {
         aria-hidden={!open}
         className="col-start-1 row-start-1 flex flex-col justify-end pr-2"
       >
-        <span className="block text-xs font-medium uppercase tracking-eyebrow text-secondary">
+        <span className="block pr-7 text-xs font-medium uppercase tracking-eyebrow text-secondary">
           {category}
           {status && ` · ${status}`}
         </span>
@@ -83,11 +83,11 @@ export default function ToolCard({ tool }: { tool: Tool }) {
         {since && <span className="mt-3 block text-xs text-muted">Since {since}</span>}
       </motion.span>
 
-      {/* Affordance: shows the card is interactive, and turns into a × when open. */}
+      {/* Affordance: shows the card is interactive, and turns into a × when open. Top-right keeps it clear of the text. */}
       <Plus
         size={18}
         aria-hidden
-        className={`absolute bottom-5 right-5 text-muted transition-transform duration-200 sm:bottom-6 sm:right-6 ${
+        className={`absolute right-5 top-5 text-muted transition-transform duration-200 sm:right-6 sm:top-6 ${
           open ? 'rotate-45' : ''
         }`}
       />

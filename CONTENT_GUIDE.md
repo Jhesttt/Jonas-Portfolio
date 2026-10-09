@@ -52,11 +52,17 @@ Videos are **not** stored in this project. Host them on YouTube and embed them.
 
 ## Tools (About page)
 
-In `src/data/tools.ts`, each tool has a `name`, a `category` (e.g. "Video Editing"), a `description` (shown when a visitor hovers or taps the card), and a short `icon`: two letters shown in the logo tile.
+In `src/data/tools.ts`, each tool has:
+
+- `name` and `category` (e.g. "Video Editing")
+- `teaser`: the one-line summary on the card before anyone hovers (keep it under about 6 words)
+- `description`: the full text shown when a visitor hovers or taps the card
+- `logo`: the path to the logo image, e.g. `'/logos/capcut.jpg'`. Drop the file in `public/logos/`. Square images work best; they are shown in a rounded square tile and are not recoloured, so the logo should have its own background.
+- `icon`: two letters shown instead of the logo if `logo` is missing or the file fails to load. Every card always keeps this as a safety net.
 
 Optional fields: `status: 'Previously'` adds a small badge to the card, and `since: 2021` adds a "Since 2021" line to the description.
 
-The brands used here (CapCut, PowerDirector, Lightroom, Canva) have no logos in the icon libraries the site can use, so every card uses a matching two-letter tile instead.
+Real SVG logos from each brand's press kit would be sharper than the current images; swap the files and update the `logo` extension.
 
 ## Site details
 
