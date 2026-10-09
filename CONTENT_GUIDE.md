@@ -52,11 +52,19 @@ Videos are **not** stored in this project. Host them on YouTube and embed them.
 
 ## Tools (About page)
 
-In `src/data/tools.ts`, each tool has a short `icon` (two letters shown as a logo), a `description`, what it was `usedFor`, and the year it was used `since`.
+In `src/data/tools.ts`, each tool has a `name`, a `category` (e.g. "Video Editing"), a `description` (shown when a visitor hovers or taps the card), and a short `icon`: two letters shown in the logo tile.
+
+Optional fields: `status: 'Previously'` adds a small badge to the card, and `since: 2021` adds a "Since 2021" line to the description.
+
+The brands used here (CapCut, PowerDirector, Lightroom, Canva) have no logos in the icon libraries the site can use, so every card uses a matching two-letter tile instead.
 
 ## Site details
 
-`src/data/site.ts` holds your name, tagline, intro, bio paragraphs, email, location, social links, and the headings shown at the top of each page. Social links start as `#` placeholders; replace each `url` with the real profile address. Replace the portrait and hero image with files from `public/photos/` the same way as photos.
+`src/data/site.ts` holds your name, tagline, intro, bio paragraphs, email, phone, location, social links, and the headings shown at the top of each page. Social links are full profile URLs and always open in a new tab. To add one, add a `{ label, url }` entry to `socials`. Replace the portrait and hero image with files from `public/photos/` the same way as photos.
+
+## Contact form
+
+The form on the Contact page has no server behind it. Pressing the button opens the visitor's own email app with the message prefilled and addressed to the `email` set in `site.ts`; the visitor still has to press Send there. The wording on the page says this plainly, and it can be edited in `site.ts` under `pages.contact.form`.
 
 ## Preview your changes
 

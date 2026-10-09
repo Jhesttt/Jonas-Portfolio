@@ -2,7 +2,7 @@
 
 export interface SocialLink {
   label: string
-  /** Link to the profile. Use '#' until the real URL is known. */
+  /** Full profile URL. Always opens in a new tab. */
   url: string
 }
 
@@ -41,7 +41,7 @@ export interface SiteConfig {
   name: string
   /** Italic wordmark shown in the nav. */
   logo: string
-  /** Short role line, e.g. under the hero tagline. */
+  /** Short role line shown with the hero intro. */
   role: string
   tagline: string
   /** One or two sentences for the Home intro. */
@@ -67,8 +67,19 @@ export interface SiteConfig {
   pages: {
     photos: PageCopy
     videos: PageCopy
-    about: PageCopy
-    contact: PageCopy
+    /** The About heading is the visitor's name; `tools` heads the toolkit section. */
+    about: { eyebrow: string; tools: PageCopy }
+    contact: PageCopy & {
+      form: { heading: string; note: string; button: string; fallback: string }
+    }
+  }
+  /** Copy for the 404 page. */
+  notFound: {
+    eyebrow: string
+    title: string
+    description: string
+    homeLabel: string
+    browseLabel: string
   }
   /** Copy for the Home page sections. */
   home: {
@@ -124,9 +135,9 @@ export const site: SiteConfig = {
   phone: '+63 926 077 3411',
   location: 'Antipolo City, Rizal, Philippines',
   socials: [
-    { label: 'Instagram', url: '#' },
-    { label: 'Facebook', url: '#' },
-    { label: 'YouTube', url: '#' },
+    { label: 'Instagram', url: 'https://www.instagram.com/_jnsabsms' },
+    { label: 'Facebook', url: 'https://www.facebook.com/jonas.abesamis.2025/' },
+    { label: 'YouTube', url: 'https://www.youtube.com/@sanjutsu000' },
   ],
   footerCta: 'Let’s make something worth looking at.',
   pages: {
@@ -142,14 +153,30 @@ export const site: SiteConfig = {
     },
     about: {
       eyebrow: 'About',
-      title: 'The person behind the lens',
-      description: 'A little about the work, the approach, and the tools used to finish it.',
+      tools: {
+        eyebrow: 'Toolkit',
+        title: 'What I edit with',
+        description: 'The software behind the work. Hover or tap a card to see how I use it.',
+      },
     },
     contact: {
       eyebrow: 'Contact',
       title: 'Say hello',
       description: 'Tell me about the project, the date and the feeling you are after.',
+      form: {
+        heading: 'Send a message',
+        note: 'This opens your email app with the message ready to send. Nothing is sent from this page.',
+        button: 'Open in your mail app',
+        fallback: 'Nothing opened? No problem. Email me directly at',
+      },
     },
+  },
+  notFound: {
+    eyebrow: 'Error 404',
+    title: 'This frame didn’t make the cut.',
+    description: 'The page you’re looking for doesn’t exist, or it has moved.',
+    homeLabel: 'Back to home',
+    browseLabel: 'See the photography',
   },
   home: {
     primaryCta: 'View photography',

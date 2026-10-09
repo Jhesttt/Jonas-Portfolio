@@ -43,7 +43,7 @@ export default function Button(props: ButtonProps | RouterLinkProps | AnchorProp
       <a
         href={href}
         className={classes}
-        {...(external ? { target: '_blank', rel: 'noreferrer noopener' } : {})}
+        {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
         {...rest}
       >
         {children}

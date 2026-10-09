@@ -27,19 +27,16 @@ export interface Video {
   featured: boolean
 }
 
-// Stand-in ID until the real one arrives.
-const PLACEHOLDER_YOUTUBE_ID = 'dQw4w9WgXcQ'
-
 export const videos: Video[] = [
   {
     id: 'film-01',
-    title: '[FILM TITLE]',
+    title: 'Pinya',
     roles: 'Video Editor · Audio Engineer · Actor',
     year: '2025',
     context: 'DAR Short Film Competition — PelikulAgraryo',
-    // Placeholder frame. Clear this (set to '') to use YouTube's own thumbnail.
-    thumbnail: 'https://picsum.photos/seed/film-01/1920/1080',
-    youtubeId: PLACEHOLDER_YOUTUBE_ID,
+    // Empty: the thumbnail comes from YouTube itself.
+    thumbnail: '',
+    youtubeId: 'Ab_ZA_QXHAQ',
     featured: true,
   },
 ]

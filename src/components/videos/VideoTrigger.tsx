@@ -29,7 +29,7 @@ export default function VideoTrigger({ video, onPlay, className = '', children }
         <a
           href={video.driveUrl}
           target="_blank"
-          rel="noreferrer noopener"
+          rel="noopener noreferrer"
           aria-label={`${video.title} (opens in Google Drive)`}
           className={base}
         >

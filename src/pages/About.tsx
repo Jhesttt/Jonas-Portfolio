@@ -1,18 +1,21 @@
 import { site } from '../data/site'
+import { tools } from '../data/tools'
 import Container from '../components/ui/Container'
 import SectionHeading from '../components/ui/SectionHeading'
 import HighlightCard from '../components/ui/HighlightCard'
 import CreditCard from '../components/ui/CreditCard'
+import ToolGrid from '../components/tools/ToolGrid'
 
 export default function About() {
-  const { eyebrow, title, description } = site.pages.about
+  const { eyebrow, tools: toolsCopy } = site.pages.about
   const { portrait } = site
 
   return (
     <Container className="pt-16 sm:pt-24">
-      <SectionHeading as="h1" eyebrow={eyebrow} title={title} description={description} />
+      {/* The page opens with his name; the bio sits directly beneath it. */}
+      <SectionHeading as="h1" eyebrow={eyebrow} title={site.name} />
 
-      <div className="mt-16 grid gap-12 lg:mt-24 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-20">
+      <div className="mt-12 grid gap-12 lg:mt-16 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-20">
         <figure className="lg:sticky lg:top-28 lg:self-start">
           <div
             className="overflow-hidden rounded-3xl bg-elevated"
@@ -28,9 +31,7 @@ export default function About() {
               className="h-full w-full object-cover"
             />
           </div>
-          <figcaption className="mt-4 text-sm text-muted">
-            {site.name} · {site.location}
-          </figcaption>
+          <figcaption className="mt-4 text-sm text-muted">{site.location}</figcaption>
         </figure>
 
         <div className="space-y-12">
@@ -46,6 +47,17 @@ export default function About() {
           </div>
         </div>
       </div>
+
+      <section aria-labelledby="toolkit" className="mt-28 sm:mt-40">
+        <SectionHeading
+          eyebrow={toolsCopy.eyebrow}
+          title={<span id="toolkit">{toolsCopy.title}</span>}
+          description={toolsCopy.description}
+        />
+        <div className="mt-10 lg:mt-14">
+          <ToolGrid tools={tools} />
+        </div>
+      </section>
     </Container>
   )
 }

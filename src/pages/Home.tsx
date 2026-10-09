@@ -13,13 +13,19 @@ export default function Home() {
     <>
       {/* Hero */}
       <Container className="pt-14 sm:pt-20 lg:pt-28">
-        <p className="mb-6 text-xs font-medium uppercase tracking-eyebrow text-secondary">{site.role}</p>
-        <h1 className="max-w-5xl font-display text-6xl leading-[0.98] tracking-tight sm:text-8xl lg:text-[9.5rem]">
-          {site.tagline}
+        {/* The name leads; the tagline supports it. */}
+        <h1 className="font-display text-[3.5rem] leading-[0.95] tracking-tight sm:text-8xl lg:text-[10.5rem]">
+          {site.name}
         </h1>
+        <p className="mt-5 font-display text-3xl italic leading-tight text-muted sm:mt-7 sm:text-5xl">
+          {site.tagline}
+        </p>
 
-        <div className="mt-10 flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
-          <p className="max-w-xl text-lg leading-relaxed text-muted">{site.intro}</p>
+        <div className="mt-12 flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
+          <div className="max-w-xl">
+            <p className="mb-3 text-xs font-medium uppercase tracking-eyebrow text-secondary">{site.role}</p>
+            <p className="text-lg leading-relaxed text-muted">{site.intro}</p>
+          </div>
           <div className="flex flex-wrap gap-3">
             <Button to="/photos">{home.primaryCta}</Button>
             <Button to="/videos" variant="ghost">
@@ -41,9 +47,8 @@ export default function Home() {
               className="h-full w-full object-cover"
             />
           </div>
-          <figcaption className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 bg-gradient-to-t from-[#121212]/70 to-transparent p-5 pt-20 text-[#F2EFEA] sm:p-8">
-            <span className="font-display text-2xl leading-none sm:text-3xl">{site.name}</span>
-            <span className="text-xs tracking-tight opacity-85 sm:text-sm">{site.location}</span>
+          <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#121212]/70 to-transparent p-5 pt-20 text-xs tracking-tight text-[#F2EFEA] sm:p-8 sm:text-sm">
+            {site.location}
           </figcaption>
         </figure>
       </Container>
