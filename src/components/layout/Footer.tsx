@@ -1,5 +1,5 @@
-import { ArrowUpRight } from 'lucide-react'
 import { site } from '../../data/site'
+import SocialLink from '../ui/SocialLink'
 
 export default function Footer() {
   return (
@@ -22,21 +22,9 @@ export default function Footer() {
             Elsewhere
           </p>
           <ul className="space-y-3">
-            {site.socials.map(({ label, url }) => (
-              <li key={label}>
-                <a
-                  href={url}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  className="group inline-flex items-center gap-1.5 text-base text-ink"
-                >
-                  {label}
-                  <ArrowUpRight
-                    size={16}
-                    aria-hidden
-                    className="text-muted transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                  />
-                </a>
+            {site.socials.map((social) => (
+              <li key={social.label}>
+                <SocialLink {...social} className="text-base text-ink" />
               </li>
             ))}
           </ul>

@@ -22,7 +22,7 @@ Placeholders are written as `[LIKE THIS]`. Search the project for `[` to find th
      id: 'street-01',                 // unique, no spaces
      src: '/photos/street-01.jpg',    // path inside public/, starting with /
      alt: 'Commuters crossing a wet street at dusk', // describe the image — used by screen readers
-     category: 'Street',              // creates a filter automatically
+     category: 'Street Photography', // creates a filter automatically
      title: 'After the Rain',
      year: 2024,
      featured: true,                  // true = may appear on the Home page
@@ -35,7 +35,7 @@ Placeholders are written as `[LIKE THIS]`. Search the project for `[` to find th
 
 `width` and `height` must match the real image. They reserve space in the layout so the page doesn't jump while images load. Right-click the file → Properties → Details to see them.
 
-**Categories** are not a fixed list. Use any `category` text and a filter appears for it. Keep the spelling identical across photos (`Street`, not `street` or `Streets`).
+**Categories** are not a fixed list. Use any `category` text and a filter appears for it. Keep the spelling identical across photos (`Street Photography`, not `street photography`).
 
 ## Replacing videos
 
@@ -62,3 +62,15 @@ In `src/data/tools.ts`, each tool has a short `icon` (two letters shown as a log
 npm run dev      # live preview at http://localhost:5173
 npm run build    # production build into dist/
 ```
+
+## Social links
+
+In `src/data/site.ts`, each entry in `socials` is a link, a text handle, or both:
+
+```ts
+{ label: 'Instagram', url: 'https://instagram.com/yourname' },  // link
+{ label: 'Discord', handle: 'yourname' },                         // text only (username)
+{ label: 'Discord', url: 'https://discord.gg/invite', handle: 'yourname' }, // both
+```
+
+`url: '#'` is a placeholder that goes nowhere. Replace it with the real profile URL.

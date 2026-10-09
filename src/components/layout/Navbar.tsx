@@ -39,8 +39,12 @@ export default function Navbar() {
         aria-label="Primary"
         className="mx-auto flex h-16 max-w-page items-center justify-between px-5 sm:px-8 lg:px-12"
       >
-        <Link to="/" className="font-display text-2xl leading-none tracking-tight text-ink">
-          {site.name}
+        <Link
+          to="/"
+          aria-label={`${site.logo}, home`}
+          className="font-display text-3xl italic leading-none tracking-tight text-ink"
+        >
+          {site.logo}
         </Link>
 
         <div className="flex items-center gap-2 sm:gap-6">

@@ -30,7 +30,8 @@ function Layout() {
       </a>
       <Navbar />
       <main id="main" className="min-h-[70vh]">
-        <Suspense fallback={<div className="min-h-[60vh]" aria-hidden />}>
+        {/* Viewport-tall so the footer stays below the fold until the lazy page arrives (no layout shift). */}
+        <Suspense fallback={<div className="min-h-screen" aria-hidden />}>
           <PageTransition key={pathname}>
             <Outlet />
           </PageTransition>
